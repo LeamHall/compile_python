@@ -81,7 +81,7 @@ make regen-global-objects > ${log_dir}/${language}_make_regen_global_objects_${t
 test_file="${log_dir}/${language}_python_m_test_${timestamp}.log"
 ./python -m test -uall -j0 > $test_file 2>&1
 sleep 1
-tail -1 $test_file |grep 'SUCCESS' > /dev/null
+grep "== Tests result: SUCCESS ==" $test_file > /dev/null
 if [ $? -ne 0 ]
 then
     echo "Failed tests, do not install"
