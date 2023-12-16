@@ -45,8 +45,9 @@ fi
 
 if [ ! -d "${log_dir}" ]
 then
-    echo "Can't find ${log_dir}"
-    exit
+    #echo "Can't find ${log_dir}"
+    echo "Trying to make ${log_dir}"
+    mkdir ${log_dir}
 fi
 
 # Soft link make_new_language.sh to install_language.sh and
