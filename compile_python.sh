@@ -54,6 +54,12 @@ fi
 if [ "$self" == 'root' -a "$scriptname" == 'install_python.sh' ]
 then
     make install > ${log_dir}/${language}_make_install_${timestamp}.log 2>&1 
+    echo "### make clean ###" >> ${log_dir}/${language}_make_install_${timestamp}.log 2>&1
+    make clean >> ${log_dir}/${language}_make_install_${timestamp}.log 2>&1
+    repo_owner=`stat -c "%U" $PWD`
+    repo_group=`stat -c "%G" $PWD`
+    echo "### chown $repo_owner:$repo_group ###" >> ${log_dir}/${language}_make_install_${timestamp}.log 2>&1
+    chown -R $repo_owner:$repo_group $PWD >> ${log_dir}/${language}_make_install_${timestamp}.log 2>&1
     exit
 fi
 
